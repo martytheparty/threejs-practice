@@ -9,29 +9,177 @@
       canvas{
         background: red;
       }
-      .controls {
+      .controls-table {
         position:absolute;
         border: 1px solid black;
         background-color: #cccccc;
         margin: 5px;
       }
-      .controls .title {
+      .controls-table .title {
         text-align: center;
+      }
+      .shower {
+        cursor: hand;
+      }
+      .hider {
+        cursor: hand;
       }
     </style>
   </head>
   <body>
-    <table class='controls'>
-      <tr>
-        <td class='title' colspan="2">CONTROLS</td>
+    <table class='controls-table'>
+      <tr class='controls row title'>
+        <td class='title' colspan="2">
+          CONTROLS
+          <span
+            id='controlsShower'
+            attr-type='controls'
+            class='shower'
+            style="float:right;display:none">show</span>
+          <span
+            id='controlsHider'
+            class='hider'
+            style="float:right"
+            attr-type='controls'
+            >hide</span>
+        </td>
       </tr>
-      <tr>
+      <tr class='controls-row-attribute'>
         <td>Speed</td>
         <td><input id="speedInput" type="range" min="0" max="100"></td>
       </tr>
-      <tr>
+      <tr class='controls-row-attribute'>
         <td>Zoom</td>
         <td><input id="zoomInput" type="range" min="0" max="100"></td>
+      </tr>
+      <tr>
+        <td class='title' colspan="2">
+          SCENE
+          <span
+            id='sceneShower'
+            class='shower'
+            style="float:right;display:none"
+            attr-type='scene'
+          >show</span>
+          <span
+          id='sceneHider'
+          class='hider'
+          style="float:right"
+          attr-type='scene'
+           >hide</span>
+        </td>
+      </tr>
+      <tr class='scene-row-attribute'>
+        <td>red</td>
+        <td><input id="redInput" type="range" min="0" max="255" value="66"></td>
+      </tr>
+      <tr class='scene-row-attribute'>
+        <td>green</td>
+        <td><input id="greenInput" type="range" min="0" max="255" value="66"></td>
+      </tr>
+      <tr class='scene-row-attribute'>
+        <td>blue</td>
+        <td><input id="blueInput" type="range" min="0" max="255" value="66"></td>
+      </tr>
+      <tr>
+        <td class='title' colspan="2">
+          OBJECT
+          <span
+            id='objectShower'
+            class='shower'
+            style="float:right;display:none"
+            attr-type='object'
+          >show</span>
+          <span
+          id='objectHider'
+          class='hider'
+          style="float:right"
+          attr-type='object'
+           >hide</span>
+        </td>
+      </tr>
+      <tr class='object-row-attribute'>
+        <td>width</td>
+        <td><input id="objectWidth" type="number" style="width:100px"></td>
+      </tr>
+      <tr class='object-row-attribute'>
+        <td>height</td>
+        <td><input id="objectHeight" type="number" style="width:100px"></td>
+      </tr>
+      <tr class='object-row-attribute'>
+        <td>depth</td>
+        <td><input id="objectDepth" type="number" style="width:100px"></td>
+      </tr>
+      <tr class='object-row-attribute'>
+        <td>red</td>
+        <td><input id="objectRedInput" type="range" min="0" max="255" value='255'></td>
+      </tr>
+      <tr class='object-row-attribute'>
+        <td>green</td>
+        <td><input id="objectGreenInput" type="range" min="0" max="255" value="0"></td>
+      </tr>
+      <tr class='object-row-attribute'>
+        <td>blue</td>
+        <td><input id="objectBlueInput" type="range" min="0" max="255" value="0"></td>
+      </tr>
+      <tr>
+        <td class='title' colspan="2">
+          LIGHTS
+          <span
+            id='lightsShower'
+            class='shower'
+            style="float:right;display:none"
+            attr-type='lights'
+          >show</span>
+          <span
+          id='lightsHider'
+          class='hider'
+          style="float:right"
+          attr-type='lights'
+           >hide</span>
+        </td>
+      </tr>
+      <tr class='lights-row-attribute'>
+        <td class='title' colspan="2">
+          Ambiant Light
+        </td>
+      </tr>
+      <tr class='lights-row-attribute'>
+        <td>Red</td>
+        <td><input id="light1Red" type="range" min="0" max="255" value="255"></td>
+      </tr>
+      <tr class='lights-row-attribute'>
+        <td>Green</td>
+        <td><input id="light1Green" type="range" min="0" max="255" value="0"></td>
+      </tr>
+      <tr class='lights-row-attribute'>
+        <td>Blue</td>
+        <td><input id="light1Blue" type="range" min="0" max="255" value="0"></td>
+      </tr>
+      <tr class='lights-row-attribute'>
+        <td>Intensity</td>
+        <td><input id="light1Intensity" type="range" min="1" max="100" value="50"></td>
+      </tr>
+      <tr class='lights-row-attribute'>
+        <td class='title' colspan="2">
+          Point Light
+        </td>
+      </tr>
+      <tr class='lights-row-attribute'>
+        <td>Red</td>
+        <td><input id="light2Red" type="range" min="0" max="255" value="255"></td>
+      </tr>
+      <tr class='lights-row-attribute'>
+        <td>Green</td>
+        <td><input id="light2Green" type="range" min="0" max="255" value="0"></td>
+      </tr>
+      <tr class='lights-row-attribute'>
+        <td>Blue</td>
+        <td><input id="light2Blue" type="range" min="0" max="255" value="0"></td>
+      </tr>
+      <tr class='lights-row-attribute'>
+        <td>Intensity</td>
+        <td><input id="light2Intensity" type="range" min="1" max="100" value="50"></td>
       </tr>
     </table>
     <canvas id='myCanvas'></canvas>
