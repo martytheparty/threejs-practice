@@ -12,6 +12,11 @@ let objectDepth = 100;
 let objectRedColor = 255;
 let objectGreenColor = 0;
 let objectBlueColor = 0;
+let ambientLightRed = 255;
+let ambientLightGreen = 0;
+let ambientLightBlue = 255;
+let ambientIntensity = 80;
+let pointX = 0;
 
 const controls = {
   getSpeed: function() {
@@ -46,6 +51,18 @@ const controls = {
   },
   getObjectBlueColor: function() {
     return decimalToHexString(parseInt(objectBlueColor));
+  },
+  getAmbientRedColor: function() {
+    return decimalToHexString(parseInt(ambientLightRed));
+  },
+  getAmbientGreenColor: function() {
+    return decimalToHexString(parseInt(ambientLightGreen));
+  },
+  getAmbientBlueColor: function() {
+    return decimalToHexString(parseInt(ambientLightBlue));
+  },
+  getAmbientIntensity: function() {
+    return ambientIntensity;
   }
 
 };
@@ -179,6 +196,41 @@ function decimalToHexString(number)
       zoom = event.target.value * -100;
     }
   );
+})();
+
+(function setupAbientInputs() {
+  const redInput = document.getElementById('lightAmbientRed');
+  const greenInput = document.getElementById('lightAmbientGreen');
+  const blueInput = document.getElementById('lightAmbientBlue');
+  const lightAmbientInput = document.getElementById('lightAmbientIntensity');
+  redInput.value = ambientLightRed;
+  blueInput.value = ambientLightBlue;
+  greenInput.value = ambientLightGreen;
+  lightAmbientInput.value = ambientIntensity;
+  Rx.Observable.fromEvent(redInput, 'change').subscribe(
+    function(event) {
+      ambientLightRed = event.target.value;
+    }
+  );
+
+  Rx.Observable.fromEvent(greenInput, 'change').subscribe(
+    function(event) {
+      ambientLightGreen = event.target.value;
+    }
+  );
+
+  Rx.Observable.fromEvent(blueInput, 'change').subscribe(
+    function(event) {
+      ambientLightBlue = event.target.value;
+    }
+  );
+
+  Rx.Observable.fromEvent(lightAmbientInput, 'change').subscribe(
+    function(event) {
+      ambientIntensity = event.target.value;
+    }
+  );
+
 })();
 
 

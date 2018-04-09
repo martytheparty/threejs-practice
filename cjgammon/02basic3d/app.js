@@ -7,8 +7,8 @@ const rendererDefinition = {
   antialias: true
 };
 
-const camera = new THREE.PerspectiveCamera(35, window.innerWidth/window.innerHeight, 0.1, 10000);
-// camera.position(0,0,0);
+const camera = new THREE.PerspectiveCamera(35, window.innerWidth/window.innerHeight, .1, 1100);
+// camera.position(0,0,10000);
 
 const renderer = new THREE.WebGLRenderer(rendererDefinition);
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -19,8 +19,10 @@ scene.background = new THREE.Color( 0x666666 );
 const light = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(light);
 
-const light1 = new THREE.PointLight(0xffffff, 0.5);
+const light1 = new THREE.PointLight(0xffffff, 1, 10000);
 scene.add(light1);
+
+
 
 const geometry = new THREE.CubeGeometry(100, 100, 100);
 const material = new THREE.MeshLambertMaterial({color:0xffcccc});
@@ -29,9 +31,8 @@ const group = new THREE.Group();
 group.add(mesh);
 scene.add(group);
 
-  console.log(mesh.material.color);
-  mesh.material.color.setHex( 0x00ff00 );
-  console.log(mesh.material.color);
+
+
 
 let controlsSettings = {};
 controlsInfoParser();
@@ -53,7 +54,12 @@ function controlsInfoParser() {
     + controls.getObjectGreenColor()
     + controls.getObjectBlueColor();
   objectColor = parseInt(objectColor);
-
+  let ambientColor = '0x'
+  + controls.getAmbientRedColor()
+  + controls.getAmbientGreenColor()
+  + controls.getAmbientBlueColor();
+  let ambientIntensity = controls.getAmbientIntensity();
+  ambientColor = parseInt(ambientColor);
   const zoom = controls.getZoom();
   const background = new THREE.Color( sceneColor );
   controlsSettings = {
@@ -66,13 +72,16 @@ function controlsInfoParser() {
     xScale: xScale,
     yScale: yScale,
     zScale: zScale,
-    objectColor: objectColor
+    objectColor: objectColor,
+    ambientColor: ambientColor,
+    ambientIntensity: ambientIntensity/100
   };
 }
 
 calcInterval.subscribe(controlsInfoParser);
 
 function render() {
+
   mesh.material.color.setHex( controlsSettings.objectColor );
   scene.background = controlsSettings.background;
   group.rotation.x += controlsSettings.xRotationSpeed;
@@ -81,8 +90,8 @@ function render() {
   mesh.scale.x = controlsSettings.xScale;
   mesh.scale.y = controlsSettings.yScale;
   mesh.scale.z = controlsSettings.zScale;
-  //mesh.material.color.setHex( 0xffffff );
-
+  light.color.setHex(controlsSettings.ambientColor);
+  light.intensity = controlsSettings.ambientIntensity;
   renderer.render(scene, camera);
   requestAnimationFrame(render);
 }
