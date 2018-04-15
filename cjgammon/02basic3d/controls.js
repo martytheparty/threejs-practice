@@ -16,7 +16,6 @@ let ambientLightRed = 255;
 let ambientLightGreen = 0;
 let ambientLightBlue = 255;
 let ambientIntensity = 80;
-let pointX = 0;
 
 const controls = {
   getSpeed: function() {
