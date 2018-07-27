@@ -88,114 +88,29 @@ function decimalToHexString(number)
 /* Bootstrap Code - binds the inputs to the values. */
 
 (function setupObjectWidthInput() {
-  const objectWidthInput = document.getElementById('objectWidth');
-  objectWidthInput.value = objectWidth;
-  Rx.Observable.fromEvent(objectWidthInput, 'change').subscribe(
+  const objectInput = document.querySelector('threejs-control');
+  Rx.Observable.fromEvent(objectInput, 'change').subscribe(
     function(event) {
-      objectWidth = objectWidthInput.value;
+      objectWidth = objectInput.objectWidth*4;
+      objectHeight = objectInput.objectHeight*4;
+      objectDepth = objectInput.objectDepth*4;
+      sceneRedColor = objectInput.sceneRedColor;
+      sceneGreenColor = objectInput.sceneGreenColor;
+      sceneBlueColor = objectInput.sceneBlueColor;
+      objectRedColor = objectInput.objectRed;
+      objectBlueColor = objectInput.objectBlue;
+      objectGreenColor = objectInput.objectGreen;
+      speed = objectInput.speed/100;
+      zoom = objectInput.zoom*-100;
+      ambientLightRed = objectInput.ambientRed;
+      ambientLightGreen = objectInput.ambientGreen;
+      ambientLightBlue = objectInput.ambientBlue;
+      ambientIntensity = objectInput.ambientIntensity;
     }
   );
 })();
 
-(function setupObjectHeightInput() {
-  const objectHeightInput = document.getElementById('objectHeight');
-  objectHeightInput.value = objectHeight;
-  Rx.Observable.fromEvent(objectHeightInput, 'change').subscribe(
-    function(event) {
-      objectHeight = objectHeightInput.value;
-    }
-  );
-})();
 
-(function setupObjectDepthInput() {
-  const objectDepthInput = document.getElementById('objectDepth');
-  objectDepthInput.value = objectDepth;
-  Rx.Observable.fromEvent(objectDepthInput, 'change').subscribe(
-    function(event) {
-      objectDepth = objectDepthInput.value;
-    }
-  );
-})();
-
-(function setupSceneRedInput() {
-  const redInput = document.getElementById('redInput');
-  redInput.value = sceneRedColor;
-  Rx.Observable.fromEvent(redInput, 'change').subscribe(
-    function(event) {
-      sceneRedColor = redInput.value;
-    }
-  );
-})();
-
-(function setupSceneGreenInput() {
-  const greenInput = document.getElementById('greenInput');
-  greenInput.value = sceneGreenColor;
-  Rx.Observable.fromEvent(greenInput, 'change').subscribe(
-    function(event) {
-      sceneGreenColor = greenInput.value;
-    }
-  );
-})();
-
-(function setupSceneBlueInput() {
-  const blueInput = document.getElementById('blueInput');
-  blueInput.value = sceneGreenColor;
-  Rx.Observable.fromEvent(blueInput, 'change').subscribe(
-    function(event) {
-      sceneBlueColor = blueInput.value;
-    }
-  );
-})();
-
-(function setupObjectRedInput() {
-  const redObjectInput = document.getElementById('objectRedInput');
-  redObjectInput.value = objectRedColor;
-  Rx.Observable.fromEvent(objectRedInput, 'change').subscribe(
-    function(event) {
-      objectRedColor = objectRedInput.value;
-    }
-  );
-})();
-
-(function setupObjectGreenInput() {
-  const greenInput = document.getElementById('objectGreenInput');
-  objectGreenInput.value = objectGreenColor;
-  Rx.Observable.fromEvent(greenInput, 'change').subscribe(
-    function(event) {
-      objectGreenColor = greenInput.value;
-    }
-  );
-})();
-
-(function setupObjectBlueInput() {
-  const blueInput = document.getElementById('objectBlueInput');
-  objectBlueInput.value = objectBlueColor;
-  Rx.Observable.fromEvent(blueInput, 'change').subscribe(
-    function(event) {
-      objectBlueColor = blueInput.value;
-    }
-  );
-})();
-
-(function setupSpeedInput() {
-  const speedInput = document.getElementById('speedInput');
-  speedInput.value = 10;
-  Rx.Observable.fromEvent(speedInput, 'change').subscribe(
-    function(event) {
-      speed = event.target.value/100;
-    }
-  );
-})();
-
-(function setupZoomInput() {
-  const zoomInput = document.getElementById('zoomInput');
-  zoomInput.value = 10;
-  Rx.Observable.fromEvent(zoomInput, 'change').subscribe(
-    function(event) {
-      zoom = event.target.value * -100;
-    }
-  );
-})();
 
 (function setupAbientInputs() {
   const redInput = document.getElementById('lightAmbientRed');

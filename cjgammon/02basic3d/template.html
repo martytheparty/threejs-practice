@@ -13,7 +13,7 @@
         position:absolute;
         border: 1px solid black;
         background-color: #cccccc;
-        margin: 5px;
+        margin: 5px 5px;
       }
       .controls-table .title {
         text-align: center;
@@ -25,9 +25,31 @@
         cursor: hand;
       }
     </style>
+    <script src='stencil/mycomponent.js'></script>
+    <script src='control-component/threejscontrol.js'></script>
   </head>
   <body>
-    <table class='controls-table'>
+
+    <threejs-control
+      speed="70"
+      zoom="50"
+      object-width="10"
+      scene-red-color="255"
+      scene-green-color="255"
+      scene-blue-color="255"
+      object-height="25"
+      object-depth="25"
+      object-red="30"
+      object-green="200"
+      object-blue="10"
+      ambient-green="10"
+      ambient-red="100"
+      ambient-blue="100"
+      ambient-intensity="100"
+      >
+    </threejs-control>
+
+    <table class='controls-table' style="display:none">
       <tr class='controls row title'>
         <td class='title' colspan="2">
           CONTROLS
@@ -155,8 +177,13 @@
         <td>Intensity</td>
         <td><input id="lightAmbientIntensity" type="range" min="1" max="100" value="50"></td>
       </tr>
+      <td colspan="2">
+          <my-component speed="1000"></my-component>
+      </td>
+      </tr>
 
     </table>
+
     <canvas id='myCanvas'></canvas>
 
   </body>

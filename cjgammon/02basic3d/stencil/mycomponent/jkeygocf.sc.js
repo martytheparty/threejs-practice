@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+const{h:t}=window.mycomponent;class e{render(){return t("div",null,"The Speed Is ",this.speed)}static get is(){return"my-component"}static get encapsulation(){return"shadow"}static get properties(){return{first:{type:String,attr:"first"},last:{type:String,attr:"last"},speed:{type:String,attr:"speed"}}}static get style(){return""}}export{e as MyComponent};

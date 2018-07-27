@@ -1,0 +1,12 @@
+{
+  "namespace": "mycomponent",
+  "fsNamespace": "mycomponent",
+  "loader": "../mycomponent.js",
+  "core": "mycomponent.xodkpuie.js",
+  "corePolyfilled": "mycomponent.oxosteck.js",
+  "components": {
+    "my-component": {
+      "$": "jkeygocf"
+    }
+  }
+}
